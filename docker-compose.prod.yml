@@ -1,0 +1,11 @@
+volumes:
+  octoprint: 
+version: "3.9"
+services:
+  octoprint:
+    image: lucasbernardestoradex/octoprint:0.1.0
+    volumes:
+    - octoprint:/octoprint
+    restart: unless-stopped
+    ports:
+    - 80:80
