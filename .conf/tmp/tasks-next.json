@@ -522,9 +522,23 @@
                 "-i",
                 "${workspaceFolder}/.conf/id_rsa",
                 "-p",
+                "${config:torizon_debug_ssh_port}",
+                "-o",
+                "UserKnownHostsFile=/dev/null",
+                "-o",
+                "StrictHostKeyChecking=no",
                 "${config:torizon_run_as}@${config:torizon_ip}",
                 "rm -rf ~/app"
             ],
+            "dependsOrder": "sequence",
+            "problemMatcher": "$msCompile",
+            "icon": {
+                "id": "layers",
+                "color": "terminal.ansiCyan"
+            }
+        },
+        {
+            "label": "validate-settings",
             "detail": "",
             "hide": true,
             "command": "bash",
