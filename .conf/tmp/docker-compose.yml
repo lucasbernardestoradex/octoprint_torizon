@@ -1,7 +1,0 @@
-version: "3.9"
-services:
-  octoprint:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    image: ${DOCKER_LOGIN}/octoprint:${TAG}
