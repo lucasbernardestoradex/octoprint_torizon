@@ -18,7 +18,7 @@
   "tcb.version": "3.8.1",
   "docker_login": "lucasbernardestoradex",
   "docker_tag": "1.0.3",
-  "docker_registry": "",
+  "docker_registry": "registry-1.docker.io",
   "docker_password": "secret",
   "docker.environment": {
     "DOCKER_HOST": "tcp://printer.local:2375"
