@@ -23,7 +23,7 @@
   "docker.environment": {
     "DOCKER_HOST": "tcp://printer.local:2375"
   },
-  "tcb.clientId": " 3043d0e9-538c-41f4-97e8-5458eb698a90",
+  "tcb.clientId": "3043d0e9-538c-41f4-97e8-5458eb698a90",
   "tcb.clientSecret": "secret",
   "tcb.fleetName": "test_git_octoprint"
 }
