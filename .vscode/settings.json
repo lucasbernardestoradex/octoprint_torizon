@@ -1,7 +1,7 @@
 {
   "torizon_psswd": "123",
   "torizon_login": "torizon",
-  "torizon_ip": "printer.local",
+  "torizon_ip": "10.22.1.177",
   "host_ip": "10.22.1.90",
   "torizon_workspace": "${workspaceFolder}",
   "torizon_debug_port": "",
@@ -21,7 +21,7 @@
   "docker_registry": "registry-1.docker.io",
   "docker_password": "secret",
   "docker.environment": {
-    "DOCKER_HOST": "tcp://printer.local:2375"
+    "DOCKER_HOST": "tcp://10.22.1.177:2375"
   },
   "tcb.clientId": "3043d0e9-538c-41f4-97e8-5458eb698a90",
   "tcb.clientSecret": "secret",
