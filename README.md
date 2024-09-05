@@ -4,20 +4,20 @@ The purpose of this application is use a Toradex SoM to control a 3D printer, wi
 
 ## Configure the USB connection to the printer
 
-In the `docker-compose.yml`, inside the `devices` group, the standard USB port for the connection is `- "/dev/ttyUSB0:/dev/ttyUSB0"`. However it could be another port in your device.
+In the `docker-compose.yml`, inside the `device_cgroup_rules`, the standard USB port for the connection is `- c 188:0 rmw`. However it could be another port in your device.
 
-To search the possible ports to connection, in the target device, run the command:
+To search the possible ports to connection, in the target device, run the command and use `Linux device major`:
 
-`# ls /dev/ttyUSB*`
+`# ls -l /dev/ttyUSB*`
 
-If your USB port is /dev/ttyUSB3, for example, change the `docker-compose.yml` to `- "/dev/ttyUSB3:/dev/ttyUSB0"`. Note that only the left statement is about the ports in the SoM, the right is about the container ports.
+In this case, running this command provide `crw-rw---- 1 root dialout 188,   0 Sep  5 17:41 ttyUSB0`, so on the `docker-compose.yml`, use `- c 188:0 rmw` inside `device_cgroup_rules`. Note that only the left statement is about the ports in the SoM, the right is about the container ports.
 
 ## Configure the camera port
 
-Furthermore, the same thing must be done to the camera. The standard in the `docker-compose.yml` is `- "/dev/video2:/dev/video0"`.
+Furthermore, the same thing must be done to the camera, inside the `device_cgroup_rules`.
 
 To search the possible ports to connection, in the target device, run the command:
 
-`# ls /dev/video*`
+`# ls -l /dev/video*`
 
-If your video port is /dev/video3, for example, change the `docker-compose.yml` to `- "- /dev/video3:/dev/video0"`. Note that only the left statement is about the ports in the SoM, the right is about the container ports.
+If your video port is `crw-rw---- 1 root video    81,   4 Sep  5 17:41 video`, for example, change the `device_cgroup_rules` to `- c 81:* rmw`. Also, you should select your camera index on `CAMERA_DEV` virtual environment.
