@@ -4,7 +4,7 @@ services:
     - ENABLE_MJPG_STREAMER=true # Used to enable the camera streaming
     - CAMERA_DEV=/dev/video4 # Camera device on /dev
     image: octoprint/octoprint:latest
-    device_cgroup_rules:
+    device_cgroup_rules: # Used to enable hot-plug
     - c 188:0 rmw # Serial USB
     - c 81:* rmw # Camera
     restart: unless-stopped
