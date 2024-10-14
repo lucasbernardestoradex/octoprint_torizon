@@ -13,5 +13,41 @@ services:
       - /dev:/dev
     ports:
       - 80:80
+
+  weston:
+    image: torizon/weston-vivante:${CT_TAG_WESTON_VIVANTE}
+    container_name: weston
+    environment:
+      - ACCEPT_FSL_EULA=1
+    restart: unless-stopped
+    network_mode: host
+    cap_add:
+      - CAP_SYS_TTY_CONFIG
+    volumes:
+      - /dev:/dev
+      - /tmp:/tmp
+      - /run/udev/:/run/udev/
+    device_cgroup_rules:
+      - 'c 4:* rmw'
+      - 'c 13:* rmw'
+      - 'c 199:* rmw'
+      - 'c 226:* rmw'
+    command: --developer --tty=/dev/tty7
+
+  chromium:
+    image: torizon/chromium:${CT_TAG_CHROMIUM}
+    container_name: chromium
+    restart: unless-stopped
+    volumes:
+      - /tmp:/tmp
+      - /var/run/dbus:/var/run/dbus
+      - /dev/galcore:/dev/galcore
+    device_cgroup_rules:
+      - 'c 199:* rmw'
+    security_opt:
+      - seccomp=unconfined
+    shm_size: '256mb'
+    command: --window-size=800,480 --virtual-keyboard http://10.22.1.51/#control
+
 volumes:
   octoprint:
