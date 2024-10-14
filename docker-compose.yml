@@ -42,6 +42,7 @@ services:
     restart: unless-stopped
     depends_on:
       - weston
+      - octoprint
     volumes:
       - /tmp:/tmp
       - /var/run/dbus:/var/run/dbus
