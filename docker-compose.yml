@@ -20,6 +20,8 @@ services:
     environment:
       - ACCEPT_FSL_EULA=1
     restart: unless-stopped
+    depends_on:
+      - octoprint
     network_mode: host
     cap_add:
       - CAP_SYS_TTY_CONFIG
@@ -38,6 +40,8 @@ services:
     image: torizon/chromium:${CT_TAG_CHROMIUM}
     container_name: chromium
     restart: unless-stopped
+    depends_on:
+      - weston
     volumes:
       - /tmp:/tmp
       - /var/run/dbus:/var/run/dbus
