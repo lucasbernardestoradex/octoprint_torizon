@@ -51,7 +51,7 @@ services:
     security_opt:
       - seccomp=unconfined
     shm_size: '256mb'
-    command: --window-size=800,480 --virtual-keyboard http://10.22.1.51/#control
+    command: --window-size=800,480  http://10.22.1.51/#control
 
 volumes:
   octoprint:
